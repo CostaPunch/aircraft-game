@@ -1,0 +1,221 @@
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .game {
+        width: 380px;
+        height: 500px;
+        border: 1px solid black;
+        margin: auto;
+        background-color: rgb(68, 222, 228);
+    }
+    
+    .timer {
+        color: blue;
+        font-size: 30px;
+        font-weight: bold;
+        position: relative;
+        top: -150px;
+        left: 200px;
+    }
+    
+    #character {
+        width: 42px;
+        height: 42px;
+        background-image: url(one.png);
+        position: relative;
+        top: 380px;
+        left: 190px;
+    }
+    
+    #block {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 190px;
+        animation: block 1000ms infinite linear;
+    }
+    
+    @keyframes block {
+        0% {
+            top: 0px;
+        }
+        100% {
+            top: 350px;
+        }
+    }
+    
+    #block-one {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 900px;
+        animation: block-one 4000ms infinite linear;
+    }
+    
+    @keyframes block-one {
+        0% {
+            top: -430px;
+        }
+        100% {
+            top: -120px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    #block-two {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: -100px;
+        left: 115px;
+        animation: block-two 5000ms infinite linear;
+    }
+    
+    @keyframes block-two {
+        0% {
+            top: -100px;
+        }
+        100% {
+            top: 170px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    #block-three {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: -150px;
+        left: 240px;
+        animation: block-three 3000ms infinite linear;
+    }
+    
+    @keyframes block-three {
+        0% {
+            top: 0px;
+        }
+        100% {
+            top: 260px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    .block-four {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 140px;
+        animation: block-four 4000ms infinite linear;
+    }
+    
+    @keyframes block-four {
+        0% {
+            top: -170px;
+        }
+        100% {
+            top: 80px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    .block-five {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 90px;
+        animation: block-five 3000ms infinite linear;
+    }
+    
+    @keyframes block-five {
+        0% {
+            top: -250px;
+        }
+        100% {
+            top: 20px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    .block-six {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 40px;
+        animation: block-six 4000ms infinite linear;
+    }
+    
+    @keyframes block-six {
+        0% {
+            top: -250px;
+        }
+        100% {
+            top: -20px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    .block-seven {
+        width: 48px;
+        height: 48px;
+        background-image: url(wheel-two.png);
+        position: relative;
+        top: 0px;
+        left: 0px;
+        animation: block-seven 3500ms infinite linear;
+    }
+    
+    @keyframes block-seven {
+        0% {
+            top: -350px;
+        }
+        100% {
+            top: -60px;
+            transform: translateY(150%) rotate(-180deg);
+        }
+    }
+    
+    #left,
+    #right {
+        width: 50%;
+        position: absolute;
+        height: 500px;
+    }
+    
+    #right {
+        left: 50%;
+    }
+    
+    #der {
+        width: 64px;
+        height: 64px;
+        background-image: url(der.png);
+        position: relative;
+        top: 30px;
+        left: 100px;
+        animation: der 3500ms infinite linear;
+    }
+    
+    @keyframes der {
+        0% {
+            left: -64px;
+            transform: translateX(100%) rotate(180deg);
+        }
+        100% {
+            left: 180px;
+            transform: translateX(100%) rotate(180deg);
+        }
+    }
