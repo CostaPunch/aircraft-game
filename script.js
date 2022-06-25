@@ -1,4 +1,4 @@
-var character = document.getElementById("character");
+var airCraft = document.getElementById("character");
 var interval;
 var both = 0;
 
@@ -7,9 +7,25 @@ var both = 0;
 // creating a new element
 
 const body = document.body
-const div = document.createElement("div");
-body.appendChild(div);
-div.setAttribute("id", "block-one");
+
+function addProjectile(left) {
+    const div = document.createElement("div");
+    body.appendChild(div);
+    div.setAttribute("class", "projectile-block");
+    // random value between 780 and 1100
+    div.style.left = `${left}px`;
+    // dynamic anymation speed for animation: block-one 4000ms infinite linear;
+    // random number between 2000 and 5000
+    // add random color to the projectile
+
+    div.style.animation = `block-one ${Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000}ms infinite linear`;
+}
+
+addProjectile(780);
+addProjectile(828);
+addProjectile(876);
+addProjectile(914);
+
 
 /*
 //adding multiple elements
@@ -25,42 +41,58 @@ gameDiv.appendChild(divElement);
 
 //Game over
 
-setInterval(function() {
+setInterval(function () {
 
-    var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
-    var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-    var blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
+    const projectileBlocks = document.getElementsByClassName('projectile-block');
 
-    if (characterLeft == blockLeft &&
-        blockTop < 400 &&
-        blockTop > 300) {
+    for (let i = 0; i < projectileBlocks.length; i++) {
+        const projectile = projectileBlocks[i];
+        // var aircraftLeft = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
+        // var aircraftTop = parseInt(window.getComputedStyle(airCraft).getPropertyValue("top"));
+        // var projectileLeft = parseInt(window.getComputedStyle(projectile).getPropertyValue("left"));
+        // var projectileTop = parseInt(window.getComputedStyle(projectile).getPropertyValue("top"));
+        // console.log('Projectile', projectileLeft, projectileTop);
+        // console.log('Projectile', projectile.getBoundingClientRect());
+        // console.log('Aircraft', airCraft.getBoundingClientRect());
+        const airCraftPosition = airCraft.getBoundingClientRect();
+        const projectilePosition = projectile.getBoundingClientRect();
+        if (airCraftPosition.left < projectilePosition.right &&
+            airCraftPosition.right > projectilePosition.left &&
+            airCraftPosition.top < projectilePosition.bottom &&
+            airCraftPosition.bottom > projectilePosition.top) {
+            console.log('Game Over');
+            clearInterval(interval);
+            alert("Game over, refesh the page again");
+            projectile.style.animation = "none";
+            projectile.style.display = "none";
+            break;
+        }
 
-        alert("Game over, refesh the page again");
-        block.style.animation = "none";
-        block.style.display = "none";
+        // if (aircraftLeft == projectileLeft) {
+
+        // }
     }
-}, 1);
+}, 100);
 
 
 
 /*direction*/
 
 function moveLeft() {
-    var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+    var left = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
     if (left > 0) {
-        character.style.left = left - 1 + "px";
+        airCraft.style.left = left - 1 + "px";
     }
 }
 
 function moveRight() {
-    var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+    var left = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
     if (left < 338) {
-        character.style.left = left + 1 + "px";
+        airCraft.style.left = left + 1 + "px";
     }
 }
 
 /*activation */
-
 document.addEventListener("keydown", event => {
     if (both == 0) {
         both++;
@@ -84,12 +116,12 @@ document.addEventListener("keyup", event => {
 
 var Clock = {
     totalSeconds: 0,
-    start: function() {
+    start: function () {
         if (!this.interval) {
             var self = this;
 
             function pad(val) { return val > 9 ? val : "0" + val; }
-            this.interval = setInterval(function() {
+            this.interval = setInterval(function () {
                 self.totalSeconds += 1;
 
                 document.getElementById("min").innerHTML = pad(Math.floor(self.totalSeconds / 60 % 60));
@@ -99,4 +131,4 @@ var Clock = {
     },
 };
 
-document.addEventListener("keydown", function() { Clock.start(); });
+document.addEventListener("keydown", function () { Clock.start(); });

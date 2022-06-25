@@ -48,13 +48,13 @@
         }
     }
     
-    #block-one {
+    .projectile-block {
         width: 48px;
         height: 48px;
         background-image: url(wheel-two.png);
         position: relative;
         top: 0px;
-        left: 900px;
+        /* left: 900px; */
         animation: block-one 4000ms infinite linear;
     }
     
