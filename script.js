@@ -32,8 +32,6 @@ addProjectile(4);
 
 
 
-//Game over
-
 setInterval(function() {
 
     const projectileBlocks = document.getElementsByClassName('projectile-block');
@@ -74,7 +72,7 @@ function moveLeft() {
 
 function moveRight() {
     var left = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
-    if (left < 334) {
+    if (left < 335) {
         airCraft.style.left = left + 1 + "px";
     }
 }
