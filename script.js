@@ -3,7 +3,6 @@ var interval;
 var both = 0;
 
 
-
 // creating a new element
 
 const body = document.body
@@ -13,47 +12,35 @@ function addProjectile(left) {
     body.appendChild(div);
     div.setAttribute("class", "projectile-block");
     // random value between 780 and 1100
-    div.style.left = `${left}px`;
+    div.style.left = `${left}%`;
+
     // dynamic anymation speed for animation: block-one 4000ms infinite linear;
     // random number between 2000 and 5000
-    // add random color to the projectile
 
-    div.style.animation = `block-one ${Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000}ms infinite linear`;
+    div.style.animation = `block-one ${Math.floor(Math.random() * (6000 - 1000 + 1)) + 1000}ms infinite linear`;
+
 }
 
-addProjectile(780);
-addProjectile(828);
-addProjectile(876);
-addProjectile(914);
 
+addProjectile(44);
+addProjectile(20);
+addProjectile(-4);
+addProjectile(-27);
+addProjectile(12);
+addProjectile(27);
+addProjectile(4);
 
-/*
-//adding multiple elements
-
-let divElement = document.createElement("div");
-let createAttribute = document.createAttribute("id", "block-two");
-divElement.appendChild(createAttribute);
-let gameDiv = document.querySelector('.game');
-gameDiv.appendChild(divElement);
-
-*/
 
 
 //Game over
 
-setInterval(function () {
+setInterval(function() {
 
     const projectileBlocks = document.getElementsByClassName('projectile-block');
 
     for (let i = 0; i < projectileBlocks.length; i++) {
         const projectile = projectileBlocks[i];
-        // var aircraftLeft = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
-        // var aircraftTop = parseInt(window.getComputedStyle(airCraft).getPropertyValue("top"));
-        // var projectileLeft = parseInt(window.getComputedStyle(projectile).getPropertyValue("left"));
-        // var projectileTop = parseInt(window.getComputedStyle(projectile).getPropertyValue("top"));
-        // console.log('Projectile', projectileLeft, projectileTop);
-        // console.log('Projectile', projectile.getBoundingClientRect());
-        // console.log('Aircraft', airCraft.getBoundingClientRect());
+
         const airCraftPosition = airCraft.getBoundingClientRect();
         const projectilePosition = projectile.getBoundingClientRect();
         if (airCraftPosition.left < projectilePosition.right &&
@@ -68,15 +55,15 @@ setInterval(function () {
             break;
         }
 
-        // if (aircraftLeft == projectileLeft) {
-
-        // }
     }
 }, 100);
 
 
 
-/*direction*/
+
+
+
+/*direction of movement of aircraft*/
 
 function moveLeft() {
     var left = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
@@ -87,12 +74,13 @@ function moveLeft() {
 
 function moveRight() {
     var left = parseInt(window.getComputedStyle(airCraft).getPropertyValue("left"));
-    if (left < 338) {
+    if (left < 334) {
         airCraft.style.left = left + 1 + "px";
     }
 }
 
 /*activation */
+
 document.addEventListener("keydown", event => {
     if (both == 0) {
         both++;
@@ -116,12 +104,12 @@ document.addEventListener("keyup", event => {
 
 var Clock = {
     totalSeconds: 0,
-    start: function () {
+    start: function() {
         if (!this.interval) {
             var self = this;
 
             function pad(val) { return val > 9 ? val : "0" + val; }
-            this.interval = setInterval(function () {
+            this.interval = setInterval(function() {
                 self.totalSeconds += 1;
 
                 document.getElementById("min").innerHTML = pad(Math.floor(self.totalSeconds / 60 % 60));
@@ -131,4 +119,4 @@ var Clock = {
     },
 };
 
-document.addEventListener("keydown", function () { Clock.start(); });
+document.addEventListener("keydown", function() { Clock.start(); });
